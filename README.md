@@ -6,6 +6,8 @@
 
 [First pull request](https://github.com/AbdallahAbuKhurma/resty/pull/1)
 
+[Second pull request](https://github.com/AbdallahAbuKhurma/resty/pull/4)
+
 ## Code SandBox
 
 [Live URL](https://ultl0.csb.app/)
