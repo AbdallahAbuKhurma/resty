@@ -8,9 +8,13 @@
 
 [Second pull request](https://github.com/AbdallahAbuKhurma/resty/pull/4)
 
-## Code SandBox
+[Third pull request](https://github.com/AbdallahAbuKhurma/resty/pull/5)
 
-[Live URL](https://ultl0.csb.app/)
+## Deployment
+
+[Netlify](https://abdallah-resty.netlify.app/)
+
+[Sand CodeBox](https://ultl0.csb.app/)
 
 ## UML
 
