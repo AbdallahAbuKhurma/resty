@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import Form from '../src/components/form/Form';
+import Form from '../form/Form.jsx';
 
 it('should run the function when the button is clicked', async () => {
   let callApi = jest.fn();
