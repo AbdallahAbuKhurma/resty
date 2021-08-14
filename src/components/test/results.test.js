@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Result from '../results/Results.jsx';
+import Result from '../results/Results';
 
 xit('Should render results', () => {
   const data = {
