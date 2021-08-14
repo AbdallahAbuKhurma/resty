@@ -1,62 +1,45 @@
 import React from 'react';
+import { useState } from 'react';
 import { BeatLoader } from 'react-spinners';
 import './app.scss';
 
-// Let's talk about using index.js and some other name in the component folder
-// There's pros and cons for each way of doing this ...
 import Header from './components/header/Headers';
 import Footer from './components/footer/Footer';
 import Form from './components/form/Form';
 import Results from './components/results/Results';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: null,
-      requestParams: {},
-      loading: true,
-      history: false,
-    };
-  }
+function App() {
 
-  callApi = (requestParams) => {
-    // mock output
-    const data = {
-      headers: {
-        'content-type': 'string application/json',
-      },
-      count: 2,
-      results: [
-        { name: 'fake thing 1', url: 'http://fakethings.com/1' },
-        { name: 'fake thing 2', url: 'http://fakethings.com/2' },
-      ],
-    };
-    this.setState({
-      data,
-      requestParams,
-      loading: false,
-      history: true,
-    });
+  const [data, setdata] = useState(null);
+  const [requestParams, setrequestParams] = useState({});
+  const [loading, setloading] = useState(true);
+  const [history, sethistory] = useState(false);
+  const [headers, setheaders] = useState('');
+
+  function callApi(headers, results, formData) {
+    setdata(results);
+    setheaders(headers);
+    setrequestParams(formData);
+    setloading(false);
+    sethistory(true);
   };
 
-  render() {
-    return (
-      <React.Fragment>
-        <Header />
-        <h3>History</h3>
-        {this.state.history &&
-          <div className = 'history'>
-            <button>{this.state.requestParams.method}</button>
-            <h4>URL: {this.state.requestParams.url}</h4>
-          </div>
-        }
-        <Form handleApiCall={this.callApi} />
-        {this.state.loading ? <BeatLoader loading/> : <Results data={this.state.data} />}
-        <Footer />
-      </React.Fragment>
-    );
-  }
+
+  return (
+    <React.Fragment>
+      <Header />
+      <h3>History</h3>
+      {history &&
+      <div className = 'history'>
+        <button>{requestParams.method}</button>
+        <h4>URL: {requestParams.url}</h4>
+      </div>
+      }
+      <Form handleApiCall={callApi} />
+      {loading ? <BeatLoader loading/> : <Results data={{results: data, headers:headers}} />}
+      <Footer />
+    </React.Fragment>
+  );
 }
 
 export default App;
