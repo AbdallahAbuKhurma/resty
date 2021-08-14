@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { useState } from 'react';
 import './form.scss';
 
@@ -6,15 +7,24 @@ function Form(props) {
   const [url, seturl] = useState('https://pokeapi.co/api/v2/pokemon');
   const [method, setMethod] = useState('get');
   const [textArea, settextArea] = useState(false);
-  const [request, setrequest] = useState({});
+  const [request, setrequest] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = {
-      method: method,
-      url: url,
-    };
-    props.handleApiCall(formData, request);
+    try {
+      const res = await axios({
+        method: method,
+        url: url,
+        data: {},
+      });
+      const formData = {
+        method: method,
+        url: url,
+      };
+      props.handleApiCall(res.headers, res.data, formData, request);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
 
