@@ -39,7 +39,7 @@ function Form(props) {
         <label>
           <span>URL: </span>
           <input onChange = {(event) => seturl(event.target.value)} name="url" type="text" />
-          <button type="submit">GO!</button>
+          <button data-testid="submitData" type="submit">GO!</button>
         </label>
         <label className="methods">
           <button onClick = {methodHandler} id="get">GET</button>
